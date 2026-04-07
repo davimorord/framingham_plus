@@ -1,0 +1,1 @@
+{"threshold": 0.366, "sensitivity": 0.8605, "false_negatives": 18, "features": ["male", "age", "totChol", "prevalentHyp", "cigsPerDay"]}

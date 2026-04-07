@@ -1,1 +1,8 @@
-pip freeze > requirements.txt
+streamlit
+openai
+joblib
+numpy
+pandas
+scikit-learn
+shap
+matplotlib

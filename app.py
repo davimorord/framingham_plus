@@ -8,17 +8,18 @@ from form import show_form
 st.set_page_config(page_title="Cardiovascular Risk Coach", page_icon="❤️")
 st.title("❤️ Cardiovascular Risk Coach")
 
-# Load model and deployment info
+# Load model, scaler, and deployment info
 @st.cache_resource
 def load_model():
     model = joblib.load('models/best_model.pkl')
+    scaler = joblib.load('models/scaler5.pkl')          # <-- nuevo scaler para 5 features
     with open('models/feature_names.json', 'r') as f:
         features = json.load(f)
     with open('models/deployment_info.json', 'r') as f:
         info = json.load(f)
-    return model, features, info
+    return model, scaler, features, info
 
-model, feature_names, deployment_info = load_model()
+model, scaler, feature_names, deployment_info = load_model()
 threshold = deployment_info['threshold']
 
 # Session state init
@@ -44,8 +45,8 @@ else:
     st.markdown("---")
     st.subheader("Risk Assessment")
     
-    # Prepare features for prediction
-    features = np.array([[
+    # Prepare features for prediction (raw values)
+    features_raw = np.array([[
         st.session_state.patient_data['male'],
         st.session_state.patient_data['age'],
         st.session_state.patient_data['totChol'],
@@ -53,8 +54,11 @@ else:
         st.session_state.patient_data['cigsPerDay']
     ]])
     
+    # Scale features using the scaler trained on the 5 selected features
+    features_scaled = scaler.transform(features_raw)
+    
     # Predict risk
-    risk_score = model.predict_proba(features)[0][1]
+    risk_score = model.predict_proba(features_scaled)[0][1]
     risk_percent = risk_score * 100
     risk_level = "High Risk" if risk_score >= threshold else "Low Risk"
     

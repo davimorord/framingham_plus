@@ -2,6 +2,10 @@ import streamlit as st
 from openai import OpenAI
 import json
 
+api_key = st.secrets.get("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("OPENAI_API_KEY not found. Add it to .streamlit/secrets.toml")
+
 client = OpenAI()
 
 def call_coach(user_data, conversation_history):

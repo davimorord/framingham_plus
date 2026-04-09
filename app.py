@@ -65,11 +65,6 @@ else:
     st.metric("10-Year Cardiovascular Risk", f"{risk_percent:.1f}%")
     st.subheader(f"Assessment: {risk_level}")
     
-    if risk_level == "High Risk":
-        st.warning("...")
-    else:
-        st.success("...")
-    
     st.markdown("---")
     st.info(
         "**Important clinical disclaimer:** "

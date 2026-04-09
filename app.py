@@ -66,10 +66,18 @@ else:
     st.subheader(f"Assessment: {risk_level}")
     
     if risk_level == "High Risk":
-        st.warning("Your estimated risk is elevated. Consider discussing prevention strategies with your doctor.")
+        st.warning("...")
     else:
-        st.success("Your estimated risk is low. Keep up with healthy habits!")
+        st.success("...")
     
+    st.markdown("---")
+    st.info(
+        "**Important clinical disclaimer:** "
+        "This assessment is based on a machine learning model trained on a limited dataset (Framingham Heart Study, "
+        "4,238 participants, 129 CHD events). The model has not been clinically validated and should not be used as "
+        "a medical diagnostic tool. It is intended solely to demonstrate the developer's technical skills in ML, "
+        "model deployment, and AI integration. Always consult a qualified healthcare professional for medical advice."
+    )
     st.markdown("---")
     st.subheader("💬 Talk to your coach")
     

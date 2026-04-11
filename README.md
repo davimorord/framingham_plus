@@ -27,10 +27,16 @@ Test the application here:
 
 This model has several important limitations:
 
-- **Small dataset**: Trained on only 4,238 participants with 129 CHD events (15% prevalence), limiting statistical power.
-- **Cohort bias**: Framingham participants are predominantly white, limiting generalizability to diverse populations.
+- **Small & generic dataset**: Trained on only 4,238 participants from a single cohort (Framingham), limiting statistical power and generalizability to diverse populations.
+
+- **Evidence of insufficient data quality/quantity**: The model produces clinically implausible risk estimates due to the limitations of the training data. For example, a 53-year-old non-smoking male with optimal cholesterol (160 mg/dL) and no hypertension received a **40.6% 10-year risk score**, while established clinical calculators estimate ~5-10% for this healthy profile. This overestimation reflects the model's inability to learn adequate baseline risk patterns from the small and imbalanced dataset.
+
+- **Cohort bias**: Framingham participants are predominantly white, limiting applicability to other racial/ethnic groups.
+
 - **Missing predictors**: Does not include important risk factors such as family history, physical activity, diet, or socioeconomic status.
-- **High false positive rate**: At the chosen threshold (0.366), the model produces 396 false positives per 848 patients, which would lead to unnecessary follow-up in a real-world setting.
+
+- **High false positive rate**: At the chosen threshold (0.366), the model produces 396 false positives per 848 patients, leading to unnecessary follow-up in a real-world setting.
+
 - **Not clinically validated**: This model has not been prospectively validated and should not be used for medical decision-making.
 
 ## Clinical Disclaimer

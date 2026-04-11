@@ -11,7 +11,7 @@ The model is intended as a **proof-of-concept** to demonstrate technical skills 
 
 ## Model Training
 
-The model was trained in Google Colab using the NHANES dataset (2007-2010 cycles, n=4,238). The training notebooks are available in the `notebooks/` folder:
+The model was trained in Google Colab using the Framingham Heart Study dataset (`heart_disease.csv`). The training notebooks are available in the `notebooks/` folder.
 
 - `01_EDA.ipynb` - Exploratory data analysis and data preparation
 - `02_Model_Training.ipynb` - Model training, hyperparameter tuning, feature selection, and SHAP analysis
